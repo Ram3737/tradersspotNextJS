@@ -30,10 +30,13 @@ body {
   --color-1: #072d30;
   --color-2: #0c6e71;
   --color-btn: #0c969a;
+  --color-btn-hover: #31b5b9;
   --color-3: #6ca7bd;
   --color-4: #284d5f;
   --color-white: #fff;
+  --color-black: #000;
   --color-mid-white: #c9c8c7;
+  --color-btn-text: #151718;
 
   --color-success-100: #a2f0bc;
   --color-success-500: #12bd4b;
