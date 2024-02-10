@@ -1,0 +1,89 @@
+.main_carousel > div:first-of-type > div:first-of-type {
+  bottom: -10px !important;
+}
+
+.main_carousel > div:first-of-type > div:first-of-type button {
+  width: 4.625rem;
+  height: 0.175rem;
+}
+
+/* .main_carousel > div:first-of-type > div:first-of-type button:nth-child(1) {
+  background-color: #10243e !important;
+}
+
+.main_carousel > div:first-of-type > div:first-of-type button:nth-child(2) {
+  background-color: #391a03 !important;
+}
+
+.main_carousel > div:first-of-type > div:first-of-type button:nth-child(3) {
+  background-color: #0f291e !important;
+} */
+@media screen and (max-width: 974px) {
+  .main_carousel > div:first-of-type > div:first-of-type button {
+    width: 3.625rem;
+    height: 0.1rem;
+  }
+  .main_carousel > div:first-of-type > div:first-of-type {
+    bottom: 20px !important;
+  }
+}
+
+@media screen and (max-width: 924px) {
+  .main_carousel > div:first-of-type > div:first-of-type button {
+    width: 3rem;
+    height: 0.1rem;
+  }
+  .main_carousel > div:first-of-type > div:first-of-type {
+    bottom: -25px !important;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .main_carousel > div:first-of-type > div:first-of-type button {
+    width: 2.5rem;
+    height: 0.1rem;
+  }
+  .main_carousel > div:first-of-type > div:first-of-type {
+    bottom: -15px !important;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .main_carousel > div:first-of-type > div:first-of-type button {
+    width: 2.5rem;
+    height: 0.1rem;
+  }
+  .main_carousel > div:first-of-type > div:first-of-type {
+    bottom: 10px !important;
+  }
+}
+
+@media screen and (max-width: 447px) {
+  .main_carousel > div:first-of-type > div:first-of-type button {
+    width: 2.5rem;
+    height: 0.1rem;
+  }
+  .main_carousel > div:first-of-type > div:first-of-type {
+    bottom: 20px !important;
+  }
+}
+
+@media screen and (max-width: 415px) {
+  .main_carousel > div:first-of-type > div:first-of-type button {
+    width: 2rem;
+    height: 0.1rem;
+  }
+  .main_carousel > div:first-of-type > div:first-of-type {
+    bottom: 40px !important;
+  }
+}
+
+@media screen and (max-width: 386px) {
+  .main_carousel > div:first-of-type > div:first-of-type button {
+    width: 2rem;
+    height: 0.1rem;
+  }
+  .main_carousel > div:first-of-type > div:first-of-type {
+    bottom: 60px !important;
+  }
+}

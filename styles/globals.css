@@ -26,6 +26,7 @@ body {
   --color-primary-700: #3d0264; */
 
   --color-main-bg: #151718;
+  --color-main-bg-2: #0c0d0e;
   --color-transparent-bg: "rgba(30, 30, 30, 0.7)";
   --color-1: #072d30;
   --color-2: #0c6e71;
@@ -36,7 +37,11 @@ body {
   --color-white: #fff;
   --color-black: #000;
   --color-mid-white: #c9c8c7;
+  --color-dark-white: #9ba1a6;
   --color-btn-text: #151718;
+  --color-border: #313538;
+  --color-input-border: #3f4345;
+  --color-input-outline: #0954a5;
 
   --color-success-100: #a2f0bc;
   --color-success-500: #12bd4b;
@@ -75,4 +80,8 @@ a {
 button {
   font: inherit;
   cursor: pointer;
+}
+
+.carousel-indicators {
+  bottom: -65px;
 }

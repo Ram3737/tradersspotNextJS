@@ -1,14 +1,18 @@
 import React, { Fragment } from "react";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "../../../public/images/logo.svg";
 import ButtonComponent from "../buttonComponent/buttonComponent";
 import { IoMenu } from "react-icons/io5";
 import { IoCloseSharp } from "react-icons/io5";
+import { useSession } from "next-auth/react";
 import styles from "./main-navigation.module.css";
 
 function MainNavigation(props) {
+  const router = useRouter();
+  const { data: session } = useSession();
   const [windowWidth, setWindowWidth] = useState(undefined);
   const [isMenuBtnClicked, setIsMenuBtnClicked] = useState(false);
 
@@ -29,6 +33,16 @@ function MainNavigation(props) {
     setIsMenuBtnClicked(!isMenuBtnClicked);
   }
 
+  function loginBtnHandler() {
+    router.push("/login");
+  }
+
+  function registerBtnHandler() {
+    router.push("/register");
+  }
+
+  // console.log("session", session);
+
   return (
     <div className={styles.header_outer}>
       <nav className={styles.nav}>
@@ -36,12 +50,7 @@ function MainNavigation(props) {
           <Fragment>
             <div className={styles.nav_left}>
               <div className={styles.logo_container}>
-                <Image
-                  src={Logo}
-                  alt="Description of image"
-                  width={25}
-                  height={25}
-                />
+                <Image src={Logo} alt="logo" width={25} height={25} />
                 {/* <p>Trader's spot</p> */}
               </div>
 
@@ -58,10 +67,11 @@ function MainNavigation(props) {
               </ul>
             </div>
             <div className={styles.nav_right}>
-              <ButtonComponent text={"Sign Up"} />
+              <ButtonComponent text={"Sign Up"} handler={registerBtnHandler} />
               <ButtonComponent
                 text={"Login"}
                 style={styles.button_transparent}
+                handler={loginBtnHandler}
               />
             </div>
           </Fragment>
@@ -79,6 +89,7 @@ function MainNavigation(props) {
               <ButtonComponent
                 text={"Try for free"}
                 style={styles.menu_option_btn_default}
+                handler={registerBtnHandler}
               />
               <div className={styles.menu_btn} onClick={menuBtnHandler}>
                 {!isMenuBtnClicked ? (

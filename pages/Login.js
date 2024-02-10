@@ -1,5 +1,7 @@
+import LoginContainer from "../components/loginPage/login-container";
+
 function LoginPage() {
-  return <p>Arambikalangala</p>;
+  return <LoginContainer />;
 }
 
 export default LoginPage;
