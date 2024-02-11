@@ -37,7 +37,7 @@ export default async function handler(req, res) {
 
     await closeDatabaseConnection();
   } catch (error) {
-    console.error("signup", error.message);
+    console.error("create-user error", error.message);
     if (error.code === 11000 && error.keyPattern && error.keyPattern.email) {
       res.status(400).json({ message: "Email already in use" });
     } else if (

@@ -47,7 +47,7 @@ export default async function handler(req, res) {
 
     await closeDatabaseConnection();
   } catch (error) {
-    console.error("signin error", error.message);
+    console.error("signin-user error", error.message);
     res.status(500).json({ message: "Internal server error" });
     await closeDatabaseConnection();
   }

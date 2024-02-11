@@ -10,7 +10,6 @@ export default async function handler(req, res) {
     const { db } = await connectToDatabase();
 
     const { userId } = req.query;
-    console.log("ui", userId);
 
     if (!mongoose.Types.ObjectId.isValid(userId)) {
       await closeDatabaseConnection();
@@ -27,7 +26,7 @@ export default async function handler(req, res) {
 
     await closeDatabaseConnection();
   } catch (error) {
-    console.error("updateUser error", error.message);
+    console.error("update-user-userId error", error.message);
     res.status(500).json({ message: "Internal server error" });
     await closeDatabaseConnection();
   }

@@ -32,7 +32,7 @@ export default async function handler(req, res) {
 
     await closeDatabaseConnection();
   } catch (error) {
-    console.error("buyCourse error", error.message);
+    console.error("check-user-password error", error.message);
     res.status(500).json({ message: "Internal server error" });
     await closeDatabaseConnection();
   }
