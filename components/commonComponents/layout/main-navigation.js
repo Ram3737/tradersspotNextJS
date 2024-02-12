@@ -7,7 +7,7 @@ import Logo from "../../../public/images/logo.svg";
 import ButtonComponent from "../buttonComponent/buttonComponent";
 import { IoMenu } from "react-icons/io5";
 import { IoCloseSharp } from "react-icons/io5";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import styles from "./main-navigation.module.css";
 
 function MainNavigation(props) {
@@ -33,15 +33,20 @@ function MainNavigation(props) {
     setIsMenuBtnClicked(!isMenuBtnClicked);
   }
 
-  function loginBtnHandler() {
+  function loginBtnHandler(event) {
+    event.preventDefault();
     router.push("/login");
   }
 
-  function registerBtnHandler() {
+  function registerBtnHandler(event) {
+    event.preventDefault();
     router.push("/register");
   }
 
-  // console.log("session", session);
+  function logoutBtnHandler(event) {
+    event.preventDefault();
+    signOut();
+  }
 
   return (
     <div className={styles.header_outer}>
@@ -66,14 +71,27 @@ function MainNavigation(props) {
                 </li>
               </ul>
             </div>
-            <div className={styles.nav_right}>
-              <ButtonComponent text={"Sign Up"} handler={registerBtnHandler} />
-              <ButtonComponent
-                text={"Login"}
-                style={styles.button_transparent}
-                handler={loginBtnHandler}
-              />
-            </div>
+            {!session ? (
+              <div className={styles.nav_right}>
+                <ButtonComponent
+                  text={"Sign Up"}
+                  handler={registerBtnHandler}
+                />
+                <ButtonComponent
+                  text={"Login"}
+                  style={styles.button_transparent}
+                  handler={loginBtnHandler}
+                />
+              </div>
+            ) : (
+              <div className={styles.nav_right}>
+                <ButtonComponent
+                  text={"Logout"}
+                  style={styles.button_transparent}
+                  handler={logoutBtnHandler}
+                />
+              </div>
+            )}
           </Fragment>
         ) : (
           <Fragment>

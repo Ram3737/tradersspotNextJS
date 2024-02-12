@@ -1,5 +1,5 @@
 .login_container_main {
-  height: calc(100dvh - 3.75rem);
+  min-height: calc(100dvh - 3.75rem);
   width: 100%;
   display: flex;
   align-items: center;

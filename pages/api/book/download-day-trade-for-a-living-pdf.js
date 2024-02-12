@@ -9,11 +9,16 @@ export default async function handler(req, res) {
   try {
     const { db } = await connectToDatabase();
 
-    const filename = "Trading-guide.pdf";
-    const pdfPath = path.join("utils", "backend", "pdfs", "Trading-guide.pdf");
+    const filename = "How_to_Day_Trade_for_a_Living.pdf";
+    const pdfPath = path.join(
+      "utils",
+      "backend",
+      "pdfs",
+      "How_to_Day_Trade_for_a_Living.pdf"
+    );
     fs.readFile(pdfPath, (err, data) => {
       if (err) {
-        res.status(500).json({ message: "Internal server error" });
+        return next(err);
       }
       res.setHeader("Content-Type", "application/pdf");
       res.setHeader(

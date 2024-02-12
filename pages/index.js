@@ -1,6 +1,7 @@
 import BannerContainer from "../components/BeforeLoggedIn/homePage/banner-container";
 import { useEffect } from "react";
 import axios from "axios";
+import { getSession } from "next-auth/react";
 
 function HomePage(props) {
   useEffect(() => {
@@ -22,8 +23,19 @@ function HomePage(props) {
 }
 
 export async function getServerSideProps(context) {
+  const session = await getSession(context);
+
+  if (session) {
+    return {
+      redirect: {
+        destination: "/dashboard",
+        permanent: false,
+      },
+    };
+  }
+
   return {
-    props: { hi: "hiiiii" },
+    props: {},
   };
 }
 

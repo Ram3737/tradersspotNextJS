@@ -9,11 +9,16 @@ export default async function handler(req, res) {
   try {
     const { db } = await connectToDatabase();
 
-    const filename = "Trading-guide.pdf";
-    const pdfPath = path.join("utils", "backend", "pdfs", "Trading-guide.pdf");
+    const filename = "Trading_in_the_zone.pdf";
+    const pdfPath = path.join(
+      "utils",
+      "backend",
+      "pdfs",
+      "Trading_in_the_zone.pdf"
+    );
     fs.readFile(pdfPath, (err, data) => {
       if (err) {
-        res.status(500).json({ message: "Internal server error" });
+        return next(err);
       }
       res.setHeader("Content-Type", "application/pdf");
       res.setHeader(
@@ -25,7 +30,7 @@ export default async function handler(req, res) {
 
     await closeDatabaseConnection();
   } catch (error) {
-    console.error("download-trading-guide-pdf error", error.message);
+    console.error("download-trading-in-the-zone-pdf error", error.message);
     res.status(500).json({ message: "Internal server error" });
     await closeDatabaseConnection();
   }
