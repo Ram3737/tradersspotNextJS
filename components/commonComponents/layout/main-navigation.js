@@ -135,7 +135,7 @@ function MainNavigation(props) {
                           </div>
                         </div>
 
-                        {!!session ? (
+                        {!session ? (
                           <div className={styles.menu_option_btn_container}>
                             <ButtonComponent
                               text={"Login"}
