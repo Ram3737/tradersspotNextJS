@@ -35,7 +35,7 @@ function MainNavigation(props) {
 
   function loginBtnHandler(event) {
     event.preventDefault();
-    router.push("/login");
+    router.push("/register");
   }
 
   function registerBtnHandler(event) {
