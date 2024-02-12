@@ -135,16 +135,26 @@ function MainNavigation(props) {
                           </div>
                         </div>
 
-                        <div className={styles.menu_option_btn_container}>
+                        {!!session ? (
+                          <div className={styles.menu_option_btn_container}>
+                            <ButtonComponent
+                              text={"Login"}
+                              style={styles.menu_option_btn_transparent}
+                              handler={loginBtnHandler}
+                            />
+                            <ButtonComponent
+                              text={"Signup"}
+                              style={styles.menu_option_btn_default}
+                              handler={registerBtnHandler}
+                            />
+                          </div>
+                        ) : (
                           <ButtonComponent
-                            text={"Login"}
+                            text={"Logout"}
                             style={styles.menu_option_btn_transparent}
+                            handler={logoutBtnHandler}
                           />
-                          <ButtonComponent
-                            text={"Signup"}
-                            style={styles.menu_option_btn_default}
-                          />
-                        </div>
+                        )}
                       </div>
                     </div>
                   </>
