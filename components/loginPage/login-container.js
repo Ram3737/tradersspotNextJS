@@ -1,5 +1,6 @@
 import { useRouter } from "next/navigation";
-import { signIn, useSession } from "next-auth/react";
+import { signIn } from "next-auth/react";
+import { getSession } from "next-auth/react";
 import styles from "./login-container.module.css";
 import ButtonComponent from "../commonComponents/buttonComponent/buttonComponent";
 import { useState } from "react";
@@ -8,8 +9,6 @@ function LoginContainer() {
   const [enteredEmail, setEnteredEmail] = useState(null);
   const [enteredPassword, setEnteredPassword] = useState(null);
   const router = useRouter();
-
-  const { data: session } = useSession();
 
   async function loginSubmitHandler(event) {
     event.preventDefault();
@@ -72,6 +71,23 @@ function LoginContainer() {
       </div>
     </div>
   );
+}
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+
+  if (session) {
+    return {
+      redirect: {
+        destination: "/dashboard",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
 }
 
 export default LoginContainer;
