@@ -8,6 +8,7 @@ import User from "../../../utils/backend/model/userModel";
 const bcrypt = require("bcryptjs");
 
 export default NextAuth({
+  secret: process.env.NEXTAUTH_SECRET,
   session: {
     jwt: true,
   },
