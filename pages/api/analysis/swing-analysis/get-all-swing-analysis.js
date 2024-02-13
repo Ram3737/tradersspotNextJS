@@ -87,10 +87,10 @@ export default async function handler(req, res) {
       res.status(200).json({ totalSwingAnalysis, allSwingAnalyses });
     }
 
-    await closeDatabaseConnection();
+    // await closeDatabaseConnection();
   } catch (error) {
     console.error("get-all-swing-analysis error", error.message);
     res.status(500).json({ message: "Internal server error" });
-    await closeDatabaseConnection();
+    // await closeDatabaseConnection();
   }
 }

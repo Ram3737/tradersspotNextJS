@@ -12,7 +12,7 @@ export default async function handler(req, res) {
 
     const { swingAnalysisId } = req.query;
     if (!mongoose.Types.ObjectId.isValid(swingAnalysisId)) {
-      await closeDatabaseConnection();
+      // await closeDatabaseConnection();
       return res.status(404).send({ error: "Analysis not found!" });
     }
 
@@ -26,10 +26,10 @@ export default async function handler(req, res) {
       message: "Analysis Updated",
     });
 
-    await closeDatabaseConnection();
+    // await closeDatabaseConnection();
   } catch (error) {
     console.error("update-swing-analysis error", error.message);
     res.status(500).json({ message: "Internal server error" });
-    await closeDatabaseConnection();
+    // await closeDatabaseConnection();
   }
 }

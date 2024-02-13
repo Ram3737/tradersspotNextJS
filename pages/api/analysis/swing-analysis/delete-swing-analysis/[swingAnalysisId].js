@@ -11,7 +11,7 @@ export default async function handler(req, res) {
 
     const { swingAnalysisId } = req.query;
     if (!mongoose.Types.ObjectId.isValid(swingAnalysisId)) {
-      await closeDatabaseConnection();
+      // await closeDatabaseConnection();
       return res.status(404).json({ error: "Analysis not found!" });
     }
 
@@ -20,16 +20,16 @@ export default async function handler(req, res) {
     );
 
     if (!deletedAnalysis) {
-      await closeDatabaseConnection();
+      // await closeDatabaseConnection();
       return res.status(404).json({ error: "Analysis not found!" });
     }
 
     res.status(200).json({ message: "Analysis deleted successfully" });
 
-    await closeDatabaseConnection();
+    // await closeDatabaseConnection();
   } catch (error) {
     console.error("delete-swing-analysis error", error.message);
     res.status(500).json({ message: "Internal server error" });
-    await closeDatabaseConnection();
+    // await closeDatabaseConnection();
   }
 }

@@ -12,20 +12,20 @@ export default async function handler(req, res) {
     const user = await User.findOne({ email });
 
     if (!user) {
-      await closeDatabaseConnection();
+      // await closeDatabaseConnection();
       return res.status(404).json({ message: "User not found" });
     }
 
     const { resetPasswordOTP } = user;
 
     if (!resetPasswordOTP || resetPasswordOTP.expiresAt < Date.now()) {
-      await closeDatabaseConnection();
+      // await closeDatabaseConnection();
       return res
         .status(400)
         .json({ message: "OTP expired, Try after sometime..." });
     }
     if (resetPasswordOTP.code !== enteredOTP) {
-      await closeDatabaseConnection();
+      // await closeDatabaseConnection();
       return res.status(401).json({ message: "Invalid OTP" });
     }
 
@@ -36,10 +36,10 @@ export default async function handler(req, res) {
 
     res.status(200).json({ message: "OTP verified successfully" });
 
-    await closeDatabaseConnection();
+    // await closeDatabaseConnection();
   } catch (error) {
     console.error("verify-otp error", error.message);
     res.status(500).json({ message: "Internal server error" });
-    await closeDatabaseConnection();
+    // await closeDatabaseConnection();
   }
 }

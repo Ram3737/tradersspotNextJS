@@ -12,23 +12,23 @@ export default async function handler(req, res) {
     const { userId } = req.query;
 
     if (!mongoose.Types.ObjectId.isValid(userId)) {
-      await closeDatabaseConnection();
+      // await closeDatabaseConnection();
       return res.status(404).send({ error: "User not found!" });
     }
 
     const user = await User.findByIdAndDelete(userId);
 
     if (!user) {
-      await closeDatabaseConnection();
+      // await closeDatabaseConnection();
       return res.status(404).json({ message: "User not found" });
     }
 
     res.status(200).json({ message: "User deleted successfully" });
 
-    await closeDatabaseConnection();
+    // await closeDatabaseConnection();
   } catch (error) {
     console.error("delete-user error", error.message);
     res.status(500).json({ message: "Internal server error" });
-    await closeDatabaseConnection();
+    // await closeDatabaseConnection();
   }
 }

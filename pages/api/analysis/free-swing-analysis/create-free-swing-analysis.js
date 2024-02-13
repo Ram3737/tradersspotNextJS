@@ -30,10 +30,10 @@ export default async function handler(req, res) {
 
     res.status(201).json({ message: "analysis created" });
 
-    await closeDatabaseConnection();
+    // await closeDatabaseConnection();
   } catch (error) {
     console.error("create-free-swing-analysis error", error.message);
     res.status(500).json({ message: "Internal server error" });
-    await closeDatabaseConnection();
+    // await closeDatabaseConnection();
   }
 }

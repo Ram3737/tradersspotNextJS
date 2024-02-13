@@ -28,10 +28,10 @@ export default async function handler(req, res) {
       res.send(data);
     });
 
-    await closeDatabaseConnection();
+    // await closeDatabaseConnection();
   } catch (error) {
     console.error("download-trading-in-the-zone-pdf error", error.message);
     res.status(500).json({ message: "Internal server error" });
-    await closeDatabaseConnection();
+    // await closeDatabaseConnection();
   }
 }

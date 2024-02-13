@@ -6,7 +6,7 @@ const sumRiskRewardFreeSwingSchema = new mongoose.Schema({
 });
 
 const SumRiskRewardFreeSwing =
-  mongoose.model.SumRiskRewardFreeSwing ||
+  mongoose.models.SumRiskRewardFreeSwing ||
   mongoose.model("SumRiskRewardFreeSwing", sumRiskRewardFreeSwingSchema);
 
 module.exports = SumRiskRewardFreeSwing;

@@ -14,14 +14,14 @@ export default async function handler(req, res) {
     const user = await User.findOne({ email });
 
     if (!user) {
-      await closeDatabaseConnection();
+      // await closeDatabaseConnection();
       return res.status(404).json({ message: "User not found" });
     }
 
     const isPasswordMatch = await bcrypt.compare(password, user.password);
 
     if (!isPasswordMatch) {
-      await closeDatabaseConnection();
+      // await closeDatabaseConnection();
       return res.status(401).json({ message: "Invalid password" });
     }
 
@@ -45,10 +45,10 @@ export default async function handler(req, res) {
       triedToUpdate: user.triedToUpdate,
     });
 
-    await closeDatabaseConnection();
+    // await closeDatabaseConnection();
   } catch (error) {
     console.error("signin-user error", error.message);
     res.status(500).json({ message: "Internal server error" });
-    await closeDatabaseConnection();
+    // await closeDatabaseConnection();
   }
 }

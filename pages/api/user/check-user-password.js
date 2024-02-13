@@ -12,7 +12,7 @@ export default async function handler(req, res) {
     const { email, enteredPassword } = req.body;
     const user = await User.findOne({ email });
     if (!user) {
-      await closeDatabaseConnection();
+      // await closeDatabaseConnection();
       return res.status(404).json({ message: "User not found" });
     }
 
@@ -22,7 +22,7 @@ export default async function handler(req, res) {
     );
 
     if (!isPasswordMatch) {
-      await closeDatabaseConnection();
+      // await closeDatabaseConnection();
       return res
         .status(401)
         .json({ message: "Entered password does not match" });
@@ -30,10 +30,10 @@ export default async function handler(req, res) {
 
     res.status(200).json({ message: "Password is correct" });
 
-    await closeDatabaseConnection();
+    // await closeDatabaseConnection();
   } catch (error) {
     console.error("check-user-password error", error.message);
     res.status(500).json({ message: "Internal server error" });
-    await closeDatabaseConnection();
+    // await closeDatabaseConnection();
   }
 }

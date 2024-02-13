@@ -12,7 +12,7 @@ export default async function handler(req, res) {
     const user = await User.findOne({ email });
 
     if (!user) {
-      await closeDatabaseConnection();
+      // await closeDatabaseConnection();
       return res.status(404).json({ message: "User not found" });
     }
 
@@ -27,10 +27,10 @@ export default async function handler(req, res) {
       triedToUpdate: triedToUpdate,
     });
 
-    await closeDatabaseConnection();
+    // await closeDatabaseConnection();
   } catch (error) {
     console.error("buy-course error", error.message);
     res.status(500).json({ message: "Internal server error" });
-    await closeDatabaseConnection();
+    // await closeDatabaseConnection();
   }
 }

@@ -35,7 +35,7 @@ export default async function handler(req, res) {
 
     res.status(201).json({ message: "User created successfully" });
 
-    await closeDatabaseConnection();
+    // await closeDatabaseConnection();
   } catch (error) {
     console.error("create-user error", error.message);
     if (error.code === 11000 && error.keyPattern && error.keyPattern.email) {
@@ -50,6 +50,6 @@ export default async function handler(req, res) {
       // Other errors
       res.status(500).json({ message: "Internal server error" });
     }
-    await closeDatabaseConnection();
+    // await closeDatabaseConnection();
   }
 }

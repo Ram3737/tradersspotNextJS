@@ -234,10 +234,10 @@ export default async function handler(req, res) {
       onlyBreakoutAnalyses,
     });
 
-    await closeDatabaseConnection();
+    // await closeDatabaseConnection();
   } catch (error) {
     console.error("sum-risk-reward-swing error", error.message);
     res.status(500).json({ message: "Internal server error" });
-    await closeDatabaseConnection();
+    // await closeDatabaseConnection();
   }
 }
