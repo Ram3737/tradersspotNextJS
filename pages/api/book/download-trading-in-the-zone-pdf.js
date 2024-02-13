@@ -20,7 +20,7 @@ export default async function handler(req, res) {
     fs.readFile(pdfPath, (err, data) => {
       if (err) {
         console.log(err);
-        res.status(500).json({ message: err });
+        res.status(500).json({ message: "Internal server error" });
       }
       res.setHeader("Content-Type", "application/pdf");
       res.setHeader(

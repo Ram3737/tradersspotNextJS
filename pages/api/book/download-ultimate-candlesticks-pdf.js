@@ -11,6 +11,7 @@ export default async function handler(req, res) {
 
     const filename = "ultimate_candlestick.pdf";
     const pdfPath = path.join(
+      process.cwd(),
       "utils",
       "backend",
       "pdfs",
@@ -18,7 +19,8 @@ export default async function handler(req, res) {
     );
     fs.readFile(pdfPath, (err, data) => {
       if (err) {
-        return next(err);
+        console.log(err);
+        res.status(500).json({ message: "Internal server error" });
       }
       res.setHeader("Content-Type", "application/pdf");
       res.setHeader(
