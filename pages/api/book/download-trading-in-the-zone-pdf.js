@@ -11,7 +11,6 @@ export default async function handler(req, res) {
 
     const filename = "Trading_in_the_zone.pdf";
     const pdfPath = path.join(
-      __dirname,
       "utils",
       "backend",
       "pdfs",
