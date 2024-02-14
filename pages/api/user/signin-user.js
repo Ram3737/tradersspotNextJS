@@ -44,11 +44,8 @@ export default async function handler(req, res) {
       token: token,
       triedToUpdate: user.triedToUpdate,
     });
-
-    // await closeDatabaseConnection();
   } catch (error) {
     console.error("signin-user error", error.message);
     res.status(500).json({ message: "Internal server error" });
-    // await closeDatabaseConnection();
   }
 }

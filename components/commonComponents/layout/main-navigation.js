@@ -8,6 +8,7 @@ import ButtonComponent from "../buttonComponent/buttonComponent";
 import { IoMenu } from "react-icons/io5";
 import { IoCloseSharp } from "react-icons/io5";
 import { signOut, useSession } from "next-auth/react";
+import axios from "axios";
 import styles from "./main-navigation.module.css";
 
 function MainNavigation(props) {
@@ -47,6 +48,21 @@ function MainNavigation(props) {
     event.preventDefault();
     signOut();
   }
+
+  useEffect(() => {
+    if (session) {
+      fetchUsers();
+    }
+  }, [session]);
+
+  const fetchUsers = async () => {
+    try {
+      const response = await axios.get(`/api/user/get-user-details-by-email`);
+      console.log("user data", response.data);
+    } catch (error) {
+      console.error("Error fetching users by email:", error);
+    }
+  };
 
   return (
     <div className={styles.header_outer}>

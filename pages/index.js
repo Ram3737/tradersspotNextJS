@@ -14,9 +14,9 @@ function HomePage(props) {
       const response = await axios.get(
         `/api/user/get-all-users?page=${null}&courseType=${null}&ttu=${null}&paid=${null}`
       );
-      console.log("res success 6", response.data);
+      // console.log("res success 6", response.data);
     } catch (error) {
-      console.error("Error fetching users:", error);
+      // console.error("Error fetching users:", error);
     }
   };
   return <BannerContainer />;

@@ -66,11 +66,8 @@ export default async function handler(req, res) {
       );
       res.status(200).json({ users, totalUsers });
     }
-
-    // await closeDatabaseConnection();
   } catch (error) {
     console.error("get-all-users", error.message);
     res.status(500).json({ message: "Internal server error" });
-    // await closeDatabaseConnection();
   }
 }
