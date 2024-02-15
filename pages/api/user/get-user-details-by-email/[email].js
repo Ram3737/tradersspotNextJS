@@ -1,19 +1,13 @@
 import {
   connectToDatabase,
   closeDatabaseConnection,
-} from "../../../utils/backend/mangodb";
-import User from "../../../utils/backend/model/userModel";
+} from "../../../../utils/backend/mangodb";
+import User from "../../../../utils/backend/model/userModel";
 import { getSession } from "next-auth/react";
 
 export default async function handler(req, res) {
   try {
-    const session = await getSession({ req });
-
-    // if (!session) {
-    //   return res.status(401).json({ message: "Unauthorized" });
-    // }
-
-    const { email } = session.user;
+    const { email } = req.query;
 
     const user = await User.findOne({ email });
 

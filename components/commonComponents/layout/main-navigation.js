@@ -57,7 +57,9 @@ function MainNavigation(props) {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get(`/api/user/get-user-details-by-email`);
+      const response = await axios.get(
+        `/api/user/get-user-details-by-email/${session.user.email}`
+      );
       console.log("user data", response.data);
     } catch (error) {
       console.error("Error fetching users by email:", error);
